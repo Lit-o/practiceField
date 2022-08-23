@@ -1,15 +1,9 @@
-
-
+import DeprClassCompo from "./components/DeprClassCompo";
 
 function App() {
-
-    const hi:string = "Well, hello. I'm React 17.0.2 with TS template..."
-
     return (
-        <div className="App">
-            <div className="appWrapper" style={{textAlign: "center", fontSize: 22}}>
-                <h1>{hi}</h1>
-            </div>
+        <div className="App">            
+            <DeprClassCompo testProps="testing from props"/>
         </div>
     );
 }
