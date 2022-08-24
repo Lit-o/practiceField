@@ -3,7 +3,7 @@ import DeprClassCompo from "./components/DeprClassCompo";
 function App() {
     return (
         <div className="App">            
-            <DeprClassCompo testProps="testing from props"/>
+            <DeprClassCompo testProps="Data from props"/>
         </div>
     );
 }
