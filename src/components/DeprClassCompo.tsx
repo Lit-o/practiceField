@@ -7,7 +7,8 @@ interface IDeprProps {
 interface IDeprState {
     num: number
     description: string
-    inputData: string
+    inputDataText: string
+    inputDataNum: number
 }
 
 class DeprClassCompo extends Component<IDeprProps, IDeprState> {
@@ -16,7 +17,8 @@ class DeprClassCompo extends Component<IDeprProps, IDeprState> {
         this.state = {
             num: 15,
             description: 'some text from local state',
-            inputData: 'some'
+            inputDataText: 'type Some text',
+            inputDataNum: 0
         }
     }
 
@@ -26,25 +28,35 @@ class DeprClassCompo extends Component<IDeprProps, IDeprState> {
         }))
     }
 
-    onInputChange = (e: React.FormEvent<HTMLInputElement>): void => {
+    onInputChangeText = (e: React.FormEvent<HTMLInputElement>): void => {
         e.preventDefault()
-        this.setState({
-            inputData: e.currentTarget.value
+        this.setState({            
+            inputDataText: e.currentTarget.value
+        })
+    }
+    onInputChangeNum = (e: React.FormEvent<HTMLInputElement>): void => {
+        e.preventDefault()
+        this.setState({           
+            // [e.currentTarget.name]: e.currentTarget.value 
+            inputDataNum: +e.currentTarget.value
         })
     }
 
     render() {
         const {testProps} = this.props
-        const {inputData, num, description} = this.state
+        const {inputDataText, num, description, inputDataNum} = this.state
         return (
             <div style={{textAlign: 'center'}}>
               <h1 >Hello, I'm Deprecated Class Component! And today we will work with local state...</h1>
               <p>Our props is - {testProps}</p>            
               <p>Our state is - {num} // {description}</p>
               <button onClick={this.setPlus}>Plus</button>
-              <p>Our input value is - {inputData}</p>
+              <p>Our input text value is - {inputDataText}</p>
+              <p>Our input num value is - {inputDataNum}</p>
               <form>
-                  <input type="text" value={inputData} onChange={this.onInputChange}/>
+                  <input type="text" value={inputDataText} onChange={this.onInputChangeText} name='inputDataText'/>
+                  <br/>
+                  <input type="number" value={inputDataNum} onChange={this.onInputChangeNum} name= 'inputDataNum'/>
               </form>
             </div>
         )
